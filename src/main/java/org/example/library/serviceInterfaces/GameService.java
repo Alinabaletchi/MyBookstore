@@ -10,7 +10,7 @@ public interface GameService {
 
     Game getGameById(Long id);
 
-    Game getGameByGameType(GameType gameType);
+    List<Game> getGamesByGameType(GameType gameType);
 
     List<Game> getAllGame();
 

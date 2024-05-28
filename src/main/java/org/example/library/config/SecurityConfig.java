@@ -57,6 +57,7 @@ public class SecurityConfig {
                     auth.requestMatchers("/api/wishlist/addGameToWishlist").authenticated();
                     auth.requestMatchers("/api/wishlist/addProductToWishlist").authenticated();
                     auth.requestMatchers("/api/books/**").permitAll();
+                    auth.requestMatchers("/api/books/{type}").permitAll();
                     auth.requestMatchers("/api/books/allBooks").permitAll();
                     auth.requestMatchers("/api/books/createBooks").hasRole("ADMIN");
                     auth.requestMatchers("/api/games/**").permitAll();

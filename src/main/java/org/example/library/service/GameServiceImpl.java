@@ -31,8 +31,8 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
-    public Game getGameByGameType(GameType gameType) {
-        Optional<Game> game = gameRepository.findByGameType(gameType);
+    public List<Game> getGamesByGameType(GameType gameType) {
+        Optional<List<Game>> game = gameRepository.findByGameType(gameType);
         if (game.isPresent()) {
             return game.get();
         } else {

@@ -15,6 +15,7 @@ public class Book {
     private Long id;
 
     private String image;
+
     private String name;
 
     @Enumerated(EnumType.STRING)

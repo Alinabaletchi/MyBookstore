@@ -32,7 +32,7 @@ public class BookController {
         return ResponseEntity.ok(book);
     }
 
-    @GetMapping("/{type}")
+    @GetMapping("/type/{type}")
     public ResponseEntity<List<Book>> getBooksByBookType(@PathVariable String type) {
         BookType bookType = BookType.valueOf(type);
         List<Book> books = bookService.getBooksByBookType(bookType);
@@ -48,7 +48,7 @@ public class BookController {
         return ResponseEntity.ok(bookService.getAllBook());
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/id/{id}")
     public ResponseEntity deleteBook(@PathVariable Long id){
         Book book = bookService.getBookById(id);
         if (book==null){

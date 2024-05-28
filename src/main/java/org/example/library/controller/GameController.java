@@ -1,12 +1,15 @@
 package org.example.library.controller;
 
+import org.example.library.entity.Book;
 import org.example.library.entity.Game;
+import org.example.library.enumes.BookType;
 import org.example.library.enumes.GameType;
 import org.example.library.serviceInterfaces.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -30,15 +33,16 @@ public class GameController {
         }
         return ResponseEntity.ok(game);
     }
-
-    @GetMapping("games/type/{type}")
-    public ResponseEntity<Game> getGameByGameType(GameType gameType){
-        Game game = gameService.getGameByGameType(gameType);
-        if (null==game){
+    @GetMapping("/type/{type}")
+    public ResponseEntity<List<Game>> getGamesByGameType(@PathVariable String type) {
+        GameType gameType = GameType.valueOf(type);
+        List<Game> games =gameService.getGamesByGameType(gameType);
+        if (games.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(game);
+        return ResponseEntity.ok(games);
     }
+
     @GetMapping("/allGames")
 
     public ResponseEntity<List<Game>> getAllGames(){
